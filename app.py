@@ -4,8 +4,7 @@ import os
 
 app = Flask(__name__, static_folder='static') 
 
-# Arquivo onde os dados serão salvos
-JSON_FILE = 'confirmacoes.json'
+JSON_FILE = os.path.join(os.getcwd(), 'confirmacoes.json')  # Ou use caminho absoluto
 
 def load_data():
     """Carrega os dados do arquivo JSON"""
@@ -61,4 +60,5 @@ def lista():
     return render_template('lista.html', confirmados=confirmados)
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    port = int(os.environ.get("PORT", 10000))
+    app.run(host='0.0.0.0', port=port)
