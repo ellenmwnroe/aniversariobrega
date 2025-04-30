@@ -1,0 +1,10 @@
+# Python
+venv/
+__pycache__/
+*.pyc
+
+# Dados
+confirmacoes.json
+
+# IDE
+.vscode/

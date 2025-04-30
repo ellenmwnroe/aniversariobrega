@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-md-10">
+        <div class="card p-4">
+            <h2 class="mb-4">📋 Lista de Confirmações</h2>
+            
+            <!-- Botão para atualizar a lista -->
+            <div class="mb-3">
+                <a href="/lista" class="btn btn-sm btn-outline-secondary">Atualizar Lista</a>
+            </div>
+
+            <div class="table-responsive">
+                <table class="table table-hover">
+                    <thead class="table-light">
+                        <tr>
+                            <th>Nome</th>
+                            <th>telefone</th>
+                            <th>Presença</th>
+                            <th>Mensagem</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for pessoa in confirmados %}
+                        <tr>
+                            <td>{{ pessoa.nome }}</td>
+                            <td>{{ pessoa.telefone }}</td>
+                            <td>
+                                {% if pessoa.presenca == 'sim' %}
+                                    <span class="badge bg-success">✅ Vai</span>
+                                {% else %}
+                                    <span class="badge bg-secondary">❌ Não vai</span>
+                                {% endif %}
+                            </td>
+                            <td>{{ pessoa.mensagem if pessoa.mensagem else "-" }}</td>
+                        </tr>
+                        {% else %}
+                        <tr>
+                            <td colspan="4" class="text-center">Nenhuma confirmação ainda!</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+            
+            <a href="/" class="btn btn-confirm mt-3">Voltar ao Formulário</a>
+        </div>
+    </div>
+</div>
+{% endblock %}

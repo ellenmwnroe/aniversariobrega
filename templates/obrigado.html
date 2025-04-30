@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-md-8 col-lg-6 text-center">
+        <div class="card p-5">
+            {% if resposta == 'confirmada' %}
+                <h1 class="text-success">🎉 te amooooooo, {{ nome }}!</h1>
+                <p class="fs-4">tua presença está confirmada!</p>
+                <div class="my-4">
+                    <img src="{{ url_for('static', filename='img/gatoiadanca.gif') }}" width="150">
+                </div>
+            {% else %}
+                <h1 class="text-secondary">😢 vou te dar unfollow, {{ nome }}!</h1>
+                <p class="fs-4">se prepare para um exposed</p>
+                <div class="my-4">
+                    <img src="{{ url_for('static', filename='img/gifcoco.gif') }}" width="150">
+                </div>
+            {% endif %}
+            <a href="/" class="btn btn-confirm btn-lg text-white mt-3">adicionar mais alguém</a>
+        </div>
+    </div>
+</div>
+{% endblock %}
